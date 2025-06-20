@@ -1,0 +1,21 @@
+{
+ "action": "Show Form Tour",
+ "action_label": "Tax Category Mandatory Setup",
+ "creation": "2025-06-19 00:40:24.875222",
+ "description": "# Tax Category Setup\nAustralian localisation Module will make the Tax Category in Customer, Supplier and Item (in Tax tab) Master mandatory. This setup can be switched off if needed using the link in this section below. But it is suggested to keep it mandatory as per the default setup, so that BAS report can be generated without any issues. Switching off the tax cateogry mandatory setup may result an incorrect BAS report.",
+ "docstatus": 0,
+ "doctype": "Onboarding Step",
+ "idx": 0,
+ "is_complete": 0,
+ "is_single": 1,
+ "is_skipped": 0,
+ "modified": "2025-06-20 02:28:46.293242",
+ "modified_by": "Administrator",
+ "name": "Australia Localisation Settings",
+ "owner": "Administrator",
+ "reference_document": "Australia Localisation Settings",
+ "show_form_tour": 0,
+ "show_full_form": 0,
+ "title": "Tax Category Setup",
+ "validate_action": 1
+}

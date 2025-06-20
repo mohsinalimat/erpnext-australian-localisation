@@ -7,7 +7,7 @@ app_license = "gpl-3.0"
 
 # Apps
 # ------------------
-
+app_include_js = "australian_localisation.bundle.js"
 # required_apps = []
 
 # Each item in the list will be shown as an app in the apps page
@@ -20,6 +20,7 @@ app_license = "gpl-3.0"
 # 		"has_permission": "erpnext_australian_localisation.api.permission.has_app_permission"
 # 	}
 # ]
+
 
 # Includes in <head>
 # ------------------
@@ -41,6 +42,10 @@ app_license = "gpl-3.0"
 
 # include js in page
 # page_js = {"page" : "public/js/file.js"}
+
+doctype_js = {
+    "Item" : "public/js/item.js"
+}
 
 # include js in doctype views
 # doctype_js = {"doctype" : "public/js/doctype.js"}
@@ -82,13 +87,14 @@ app_license = "gpl-3.0"
 # Installation
 # ------------
 
+boot_session = "erpnext_australian_localisation.boot.set_bootinfo"
 # before_install = "erpnext_australian_localisation.install.before_install"
-# after_install = "erpnext_australian_localisation.install.after_install"
+after_install = "erpnext_australian_localisation.install.after_install"
 
 # Uninstallation
 # ------------
 
-# before_uninstall = "erpnext_australian_localisation.uninstall.before_uninstall"
+before_uninstall = "erpnext_australian_localisation.uninstall.before_uninstall"
 # after_uninstall = "erpnext_australian_localisation.uninstall.after_uninstall"
 
 # Integration Setup
