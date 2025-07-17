@@ -5,5 +5,5 @@
 from frappe.model.document import Document
 
 
-class AustralianLocalisationSettings(Document):
+class AUBASReportingPeriod(Document):
 	pass
