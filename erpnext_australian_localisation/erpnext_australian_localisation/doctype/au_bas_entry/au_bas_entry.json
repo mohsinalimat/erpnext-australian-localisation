@@ -9,14 +9,17 @@
   "bas_label",
   "voucher_type",
   "account",
-  "gst_pay_basis",
-  "gst_offset_basis",
   "column_break_orwl",
   "date",
   "voucher_no",
   "tax_code",
+  "section_break_wqil",
+  "gst_pay_basis",
   "gst_pay_amount",
-  "gst_offset_amount"
+  "column_break_ogig",
+  "gst_offset_basis",
+  "gst_offset_amount",
+  "company"
  ],
  "fields": [
   {
@@ -50,13 +53,13 @@
    "default": "0",
    "fieldname": "gst_pay_basis",
    "fieldtype": "Currency",
-   "label": "GST Pay Basis"
+   "label": "GST to Pay - Basis"
   },
   {
    "default": "0",
    "fieldname": "gst_offset_basis",
    "fieldtype": "Currency",
-   "label": "GST Offset Basis"
+   "label": "GST to Offset - Basis"
   },
   {
    "fieldname": "column_break_orwl",
@@ -79,20 +82,34 @@
    "default": "0",
    "fieldname": "gst_pay_amount",
    "fieldtype": "Currency",
-   "label": "GST Pay Amount"
+   "label": "GST to Pay - Amount"
   },
   {
    "default": "0",
    "fieldname": "gst_offset_amount",
    "fieldtype": "Currency",
-   "label": "GST Offset Amount"
+   "label": "GST to Offset - Amount"
+  },
+  {
+   "fieldname": "section_break_wqil",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_ogig",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
   }
  ],
  "grid_page_length": 50,
  "in_create": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-07-17 20:25:33.060644",
+ "modified": "2025-08-01 16:51:54.512383",
  "modified_by": "Administrator",
  "module": "ERPNext Australian Localisation",
  "name": "AU BAS Entry",

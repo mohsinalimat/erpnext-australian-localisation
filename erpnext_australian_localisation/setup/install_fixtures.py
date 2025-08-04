@@ -1,8 +1,8 @@
 from frappe.desk.page.setup_wizard.setup_wizard import make_records
+import frappe
 
 
 def create_default_records():
-
 	records = []
 	records.extend(get_au_tax_codes())
 	records.extend(get_au_tax_determination())
@@ -54,6 +54,16 @@ def get_au_tax_codes():
 			"doctype": "AU Tax Code",
 			"tax_code": "AUPNCASGT",
 			"tax_description": "Non Capital Purchase GST",
+		},
+		{
+			"doctype": "AU Tax Code",
+			"tax_code": "AUPINPTAX",
+			"tax_description": "Purchase for Input Tax Sales",
+		},
+		{
+			"doctype": "AU Tax Code",
+			"tax_code": "AUPPVTUSE",
+			"tax_description": "Purchases for private use / not income tax deductible",
 		},
 	]
 	return records
@@ -194,8 +204,18 @@ def get_au_bas_labels():
 		},
 		{
 			"doctype": "AU BAS Label",
+			"bas_label": "G13",
+			"bas_label_description": "Purchase for Input Taxed Sales",
+		},
+		{
+			"doctype": "AU BAS Label",
 			"bas_label": "G14",
 			"bas_label_description": "Purchase without GST in the price",
+		},
+		{
+			"doctype": "AU BAS Label",
+			"bas_label": "G15",
+			"bas_label_description": "Purchase for private use / not income tax deductible",
 		},
 	]
 	return records
@@ -245,6 +265,13 @@ def get_au_bas_label_setup():
 			"tax_management": "Subjected",
 			"tax_allocation": "Collected Sales",
 			"tax_code": "AUSFREX",
+		},
+		{
+			"doctype": "AU BAS Label Setup",
+			"bas_label": "G1",
+			"tax_management": "Subjected",
+			"tax_allocation": "Collected Sales",
+			"tax_code": "AUSINPTAX",
 		},
 		{
 			"doctype": "AU BAS Label Setup",
@@ -312,9 +339,30 @@ def get_au_bas_label_setup():
 		{
 			"doctype": "AU BAS Label Setup",
 			"bas_label": "G11",
+			"tax_management": "Subjected",
+			"tax_allocation": "Deductible Purchase",
+			"tax_code": "AUPINPTAX",
+		},
+		{
+			"doctype": "AU BAS Label Setup",
+			"bas_label": "G11",
+			"tax_management": "Subjected",
+			"tax_allocation": "Deductible Purchase",
+			"tax_code": "AUPPVTUSE",
+		},
+		{
+			"doctype": "AU BAS Label Setup",
+			"bas_label": "G11",
 			"tax_management": "Tax Account",
 			"tax_allocation": "Deductible Purchase",
 			"tax_code": "AUPNCASGT",
+		},
+		{
+			"doctype": "AU BAS Label Setup",
+			"bas_label": "G13",
+			"tax_management": "Subjected",
+			"tax_allocation": "Deductible Purchase",
+			"tax_code": "AUPINPTAX",
 		},
 		{
 			"doctype": "AU BAS Label Setup",
@@ -330,5 +378,25 @@ def get_au_bas_label_setup():
 			"tax_allocation": "Deductible Purchase",
 			"tax_code": "AUPNCAFR",
 		},
+		{
+			"doctype": "AU BAS Label Setup",
+			"bas_label": "G15",
+			"tax_management": "Subjected",
+			"tax_allocation": "Deductible Purchase",
+			"tax_code": "AUPPVTUSE",
+		},
 	]
 	return records
+
+ROLES = [
+	{"doctype": "Role", "role_name": "AU Localisation Admin", "name": "AU Localisation Admin"},
+]
+
+
+def create_roles():
+	make_records(ROLES)
+
+def remove_roles():
+	for role in ROLES :
+		if frappe.db.exists("Role", role['name']):
+			frappe.delete_doc("Role", role['name'])
