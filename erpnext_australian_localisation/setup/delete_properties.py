@@ -1,6 +1,10 @@
 import frappe
-from erpnext_australian_localisation.setup.custom_fields import CUSTOM_FIELDS, HRMS_CUSTOM_FIELDS
+from erpnext_australian_localisation.setup.custom_fields import (
+	CUSTOM_FIELDS,
+	HRMS_CUSTOM_FIELDS,
+)
 from erpnext_australian_localisation.setup.property_setters import PROPERTIES
+
 
 def delete_custom_field(custom_fields):
 	for doctypes, fields in custom_fields.items():
@@ -35,9 +39,11 @@ def delete_property_setter():
 
 		frappe.db.delete("Property Setter", property_setter)
 
+
 def remove_setup():
 	delete_custom_field(CUSTOM_FIELDS)
 	delete_property_setter()
+
 
 def delete_hrms_custom_fields():
 	delete_custom_field(HRMS_CUSTOM_FIELDS)
