@@ -61,6 +61,8 @@ doctype_js = {
 	"Purchase Invoice" : "public/js/setup_input_taxed_sales.js",
 	"Purchase Order" : "public/js/setup_input_taxed_sales.js",
 	"Purchase Receipt" : "public/js/setup_input_taxed_sales.js",
+	"Supplier" : "public/js/validate_bsb_number.js",
+	"Bank Account" : "public/js/validate_bsb_number.js",
 }
 
 # include js in doctype views
@@ -168,24 +170,28 @@ before_uninstall = "erpnext_australian_localisation.uninstall.before_uninstall"
 # }
 
 doc_events = {
-	"Sales Invoice" : { 
-		"on_submit" : "erpnext_australian_localisation.overrides.invoices.on_submit" ,
-		"on_update" : "erpnext_australian_localisation.overrides.sales_invoice.on_update" ,
-		"on_cancel" : "erpnext_australian_localisation.overrides.invoices.on_cancel"
+	"Sales Invoice": {
+		"on_submit": "erpnext_australian_localisation.overrides.invoices.on_submit",
+		"on_update": "erpnext_australian_localisation.overrides.sales_invoice.on_update",
+		"on_cancel": "erpnext_australian_localisation.overrides.invoices.on_cancel",
 	},
-	"Purchase Invoice" : { 
-		"on_submit" : "erpnext_australian_localisation.overrides.invoices.on_submit", 
-		"on_update" : "erpnext_australian_localisation.overrides.purchase_invoice.on_update" ,
-		"on_cancel" : "erpnext_australian_localisation.overrides.invoices.on_cancel"
+	"Purchase Invoice": {
+		"on_submit": "erpnext_australian_localisation.overrides.invoices.on_submit",
+		"on_update": "erpnext_australian_localisation.overrides.purchase_invoice.on_update",
+		"on_cancel": "erpnext_australian_localisation.overrides.invoices.on_cancel",
 	},
-	"Company" : {
+	"Company": {
 		"after_insert": "erpnext_australian_localisation.overrides.company.after_insert"
 	},
-	"Expense Claim" : { 
-		"on_submit" : "erpnext_australian_localisation.overrides.expense_claim.on_submit",
-		"on_update" : "erpnext_australian_localisation.overrides.expense_claim.on_update",
-		"on_cancel" : "erpnext_australian_localisation.overrides.invoices.on_cancel"
-		}
+	"Expense Claim": {
+		"on_submit": "erpnext_australian_localisation.overrides.expense_claim.on_submit",
+		"on_update": "erpnext_australian_localisation.overrides.expense_claim.on_update",
+		"on_cancel": "erpnext_australian_localisation.overrides.invoices.on_cancel",
+	},
+	"Payment Entry": {
+		"on_submit": "erpnext_australian_localisation.overrides.payment_entry.on_submit",
+		"on_update": "erpnext_australian_localisation.overrides.payment_entry.on_update",
+	}
 }
 
 # Scheduled Tasks
@@ -290,4 +296,3 @@ scheduler_events = {
 # default_log_clearing_doctypes = {
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
-
