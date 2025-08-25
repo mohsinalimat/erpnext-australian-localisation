@@ -9,19 +9,19 @@ frappe.ui.form.on("AU Localisation Settings", {
 			frappe.call({
 				method: "erpnext_australian_localisation.erpnext_australian_localisation.doctype.au_localisation_settings.au_localisation_settings.is_draft",
 				args: {
-					"company" : rp[i].company
+					"company": rp[i].company
 				},
 				callback: (r) => {
-					frappe.meta.get_docfield(rp[i].doctype, "reporting_period", rp[i].name).read_only =  r.message
+					frappe.meta.get_docfield(rp[i].doctype, "reporting_period", rp[i].name).read_only = r.message
 				}
 			})
 		}
 	},
 
 	make_tax_category_mandatory(frm) {
-		if (! frm.doc.make_tax_category_mandatory) {
+		if (!frm.doc.make_tax_category_mandatory) {
 			frappe.confirm('Please make a note that Unticking this option may lead to mismatch in BAS Report generation. Do you confirm to make Tax Category Optional ?',
-				() => {},
+				() => { },
 				() => {
 					frm.set_value("make_tax_category_mandatory", 1)
 				}
@@ -39,9 +39,9 @@ frappe.ui.form.on("AU Localisation Settings", {
 
 frappe.ui.form.on("AU BAS Reporting Period", {
 
-	before_bas_reporting_period_remove: async function(frm, cdt, cdn) { 
+	before_bas_reporting_period_remove: async function (frm, cdt, cdn) {
 		row = locals[cdt][cdn]
-		await frappe.db.get_list("AU BAS Report",{
+		await frappe.db.get_list("AU BAS Report", {
 			"filters": { "company": row.company }
 		})
 			.then((data) => {

@@ -8,7 +8,7 @@ frappe.ui.form.on("AU BAS Report", {
 		frm.set_query("company", function () {
 			return {
 				filters: {
-					country : "Australia"
+					country: "Australia"
 				}
 			}
 		})
@@ -90,10 +90,10 @@ frappe.ui.form.on("AU BAS Report", {
 
 	update_label(frm) {
 		if (frm.doc['1b'] > frm.doc['1a']) {
-			frm.set_df_property("net_gst", "label", "GST Refund")	
+			frm.set_df_property("net_gst", "label", "GST Refund")
 		}
 		else {
-			frm.set_df_property("net_gst","label","GST to Pay")
+			frm.set_df_property("net_gst", "label", "GST to Pay")
 		}
 		frm.trigger("check_data_correctness")
 	},
@@ -110,24 +110,24 @@ frappe.ui.form.on("AU BAS Report", {
 				.css({ 'background-color': '#f8f8f8' })
 			frm.fields_dict["g20"].$wrapper.find('.control-value')
 				.css({ 'background-color': '#f8f8f8' })
-			frm.set_df_property("_1b_warning", "options" ," ")
+			frm.set_df_property("_1b_warning", "options", " ")
 		}
 		if (frm.doc['1a'] !== frm.doc['g9']) {
 			frm.fields_dict["1a"].$wrapper.find('.control-value')
 				.css({ 'background-color': '#ffb3b3' })
 			frm.fields_dict["g9"].$wrapper.find('.control-value')
 				.css({ 'background-color': '#ffb3b3' })
-			frm.set_df_property("_1a_warning", "options" ,"<b> Please report the issue of 1A not matching with G9 <a href='https://github.com/Arus-Info/ERPNext-Australian-Localisation/issues/new?title=1A%20not%20matching%20with%20G9 ' target='blank' >here</a> </b>")
+			frm.set_df_property("_1a_warning", "options", "<b> Please report the issue of 1A not matching with G9 <a href='https://github.com/Arus-Info/ERPNext-Australian-Localisation/issues/new?title=1A%20not%20matching%20with%20G9 ' target='blank' >here</a> </b>")
 		}
 		else {
 			frm.fields_dict["1a"].$wrapper.find('.control-value')
 				.css({ 'background-color': '#f8f8f8' })
 			frm.fields_dict["g9"].$wrapper.find('.control-value')
 				.css({ 'background-color': '#f8f8f8' })
-			frm.set_df_property("_1a_warning", "options" ," ")
+			frm.set_df_property("_1a_warning", "options", " ")
 		}
 	},
-	
+
 	update_end_date: async function (frm) {
 		if (frm.doc.start_date && frm.doc.company) {
 			if (!reporting_period) {
