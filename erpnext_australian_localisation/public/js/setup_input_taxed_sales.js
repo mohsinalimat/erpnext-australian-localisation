@@ -6,15 +6,15 @@ frappe.ui.form.on(CHILD_DOCTYPE, {
 
 	input_taxed(frm, cdt, cdn) {
 		if (cdt.includes("Sales") || cdt.includes("Delivery Note")) {
-			update_sales_item_tax_template(frm,cdt,cdn)
+			update_sales_item_tax_template(frm, cdt, cdn)
 		}
 		if (cdt.includes("Purchase")) {
-			update_purchase_item_tax_template(frm,cdt,cdn)
+			update_purchase_item_tax_template(frm, cdt, cdn)
 		}
 	},
 
 	private_use(frm, cdt, cdn) {
-		update_purchase_item_tax_template(frm,cdt,cdn)
+		update_purchase_item_tax_template(frm, cdt, cdn)
 	},
 })
 
@@ -43,7 +43,7 @@ function get_item_tax_template(frm, cdt, cdn) {
 	}
 }
 
-function update_sales_item_tax_template(frm,cdt,cdn) {
+function update_sales_item_tax_template(frm, cdt, cdn) {
 	var row = locals[cdt][cdn]
 	if (!row.input_taxed) {
 		get_item_tax_template(frm, cdt, cdn)
@@ -64,10 +64,10 @@ function update_purchase_item_tax_template(frm, cdt, cdn) {
 	if (row.input_taxed && row.private_use) {
 		frappe.model.set_value(cdt, cdn, "input_taxed", 0)
 		frappe.model.set_value(cdt, cdn, "private_use", 0)
-		frappe.throw("A "+ CHILD_DOCTYPE +" cannot be classified as both 'Purchases for private use / not income tax deductible' and 'Purchase for Input-taxed Sales.")
+		frappe.throw("A " + CHILD_DOCTYPE + " cannot be classified as both 'Purchases for private use / not income tax deductible' and 'Purchase for Input-taxed Sales.")
 	}
 	else if (!row.input_taxed && !row.private_use) {
-		get_item_tax_template(frm,cdt,cdn)
+		get_item_tax_template(frm, cdt, cdn)
 	}
 	else {
 		frappe.db.get_list("Item Tax Template", {
