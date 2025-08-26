@@ -1,6 +1,7 @@
+from datetime import date
+
 import frappe
 import pandas as pd
-from datetime import date
 
 
 def on_update(doc, event):

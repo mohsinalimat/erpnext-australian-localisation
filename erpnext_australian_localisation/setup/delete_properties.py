@@ -1,4 +1,5 @@
 import frappe
+
 from erpnext_australian_localisation.setup.custom_fields import (
 	CUSTOM_FIELDS,
 	HRMS_CUSTOM_FIELDS,

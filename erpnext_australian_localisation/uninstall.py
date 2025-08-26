@@ -1,6 +1,6 @@
 from erpnext_australian_localisation.setup.delete_properties import (
-	remove_setup,
 	delete_hrms_custom_fields,
+	remove_setup,
 )
 
 

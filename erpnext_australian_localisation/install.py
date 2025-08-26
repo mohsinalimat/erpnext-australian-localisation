@@ -1,12 +1,12 @@
+from erpnext_australian_localisation.overrides.company import initial_company_setup
 from erpnext_australian_localisation.setup.create_properties import (
-	initial_setup,
 	create_hrms_custom_fields,
+	initial_setup,
 )
 from erpnext_australian_localisation.setup.install_fixtures import (
 	create_default_records,
 	create_roles,
 )
-from erpnext_australian_localisation.overrides.company import initial_company_setup
 
 
 def after_install():
