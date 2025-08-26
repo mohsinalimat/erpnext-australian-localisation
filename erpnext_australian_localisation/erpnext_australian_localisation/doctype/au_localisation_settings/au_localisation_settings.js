@@ -4,7 +4,7 @@
 
 frappe.ui.form.on("AU Localisation Settings", {
 	refresh(frm) {
-		rp = frm.doc.bas_reporting_period
+		let rp = frm.doc.bas_reporting_period
 		for (let i = 0; i < rp.length; i++) {
 			frappe.call({
 				method: "erpnext_australian_localisation.erpnext_australian_localisation.doctype.au_localisation_settings.au_localisation_settings.is_draft",
@@ -40,7 +40,7 @@ frappe.ui.form.on("AU Localisation Settings", {
 frappe.ui.form.on("AU BAS Reporting Period", {
 
 	before_bas_reporting_period_remove: async function (frm, cdt, cdn) {
-		row = locals[cdt][cdn]
+		let row = locals[cdt][cdn]
 		await frappe.db.get_list("AU BAS Report", {
 			"filters": { "company": row.company }
 		})

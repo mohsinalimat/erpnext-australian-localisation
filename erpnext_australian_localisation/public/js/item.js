@@ -2,7 +2,7 @@
 frappe.ui.form.on("Item", {
     before_save(frm){
         if(au_localisation_settings.make_tax_category_mandatory){
-            for(i=0; i < frm.doc.taxes.length;i++){
+            for(let i=0; i < frm.doc.taxes.length;i++){
                 if (frm.doc.taxes[i].tax_category){
                     continue
                 }
