@@ -1,12 +1,6 @@
-const DOCTYPE =
-	"Sales Invoice Item" ||
-	"Sales Order Item" ||
-	"Delivery Note Item" ||
-	"Purchase Invoice Item" ||
-	"Purchase Order Item" ||
-	"Purchase Receipt Item";
+const DOCTYPE = window.cur_frm.doctype;
 
-frappe.ui.form.on(DOCTYPE, {
+frappe.ui.form.on(DOCTYPE + " Item", {
 	input_taxed(frm, cdt, cdn) {
 		if (cdt.includes("Sales") || cdt.includes("Delivery Note")) {
 			update_sales_item_tax_template(frm, cdt, cdn);
@@ -69,7 +63,7 @@ function update_purchase_item_tax_template(frm, cdt, cdn) {
 		frappe.model.set_value(cdt, cdn, "private_use", 0);
 		frappe.throw(
 			"A " +
-				CHILD_DOCTYPE +
+				cdt +
 				" cannot be classified as both 'Purchases for private use / not income tax deductible' and 'Purchase for Input-taxed Sales."
 		);
 	} else if (!row.input_taxed && !row.private_use) {
