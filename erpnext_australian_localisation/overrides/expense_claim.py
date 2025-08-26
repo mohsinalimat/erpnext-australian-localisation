@@ -4,7 +4,6 @@ from datetime import date
 
 
 def on_update(doc, event):
-
 	tax_template = "AU Non Capital Purchase - GST"
 
 	if doc.taxes:
@@ -28,7 +27,6 @@ def on_update(doc, event):
 
 
 def on_submit(doc, event):
-
 	result = []
 
 	for expense in doc.expenses:

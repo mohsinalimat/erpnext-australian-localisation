@@ -2,7 +2,6 @@ import frappe
 
 
 def on_update(doc, event):
-
 	if doc.taxes_and_charges:
 		tax_template = frappe.db.get_value(
 			"Purchase Taxes and Charges Template", doc.taxes_and_charges, "title"

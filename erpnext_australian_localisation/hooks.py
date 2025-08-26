@@ -9,9 +9,7 @@ app_license = "gpl-3.0"
 # ------------------
 app_include_js = "australian_localisation.bundle.js"
 
-fixtures = [
-	{"dt" : "Custom HTML Block", "filters" : { "name" : "Australian Localisation"}}
-]
+fixtures = [{"dt": "Custom HTML Block", "filters": {"name": "Australian Localisation"}}]
 
 company_data_to_be_ignored = ["Tax Rule"]
 
@@ -54,13 +52,13 @@ before_app_uninstall = "erpnext_australian_localisation.uninstall.before_app_uni
 # page_js = {"page" : "public/js/file.js"}
 
 doctype_js = {
-	"Item" : "public/js/item.js",
-	"Sales Invoice" : "public/js/setup_input_taxed_sales.js",
-	"Sales Order" : "public/js/setup_input_taxed_sales.js",
-	"Delivery Note" : "public/js/setup_input_taxed_sales.js",
-	"Purchase Invoice" : "public/js/setup_input_taxed_sales.js",
-	"Purchase Order" : "public/js/setup_input_taxed_sales.js",
-	"Purchase Receipt" : "public/js/setup_input_taxed_sales.js",
+	"Item": "public/js/item.js",
+	"Sales Invoice": "public/js/setup_input_taxed_sales.js",
+	"Sales Order": "public/js/setup_input_taxed_sales.js",
+	"Delivery Note": "public/js/setup_input_taxed_sales.js",
+	"Purchase Invoice": "public/js/setup_input_taxed_sales.js",
+	"Purchase Order": "public/js/setup_input_taxed_sales.js",
+	"Purchase Receipt": "public/js/setup_input_taxed_sales.js",
 }
 
 # include js in doctype views
@@ -168,24 +166,22 @@ before_uninstall = "erpnext_australian_localisation.uninstall.before_uninstall"
 # }
 
 doc_events = {
-	"Sales Invoice" : { 
-		"on_submit" : "erpnext_australian_localisation.overrides.invoices.on_submit" ,
-		"on_update" : "erpnext_australian_localisation.overrides.sales_invoice.on_update" ,
-		"on_cancel" : "erpnext_australian_localisation.overrides.invoices.on_cancel"
+	"Sales Invoice": {
+		"on_submit": "erpnext_australian_localisation.overrides.invoices.on_submit",
+		"on_update": "erpnext_australian_localisation.overrides.sales_invoice.on_update",
+		"on_cancel": "erpnext_australian_localisation.overrides.invoices.on_cancel",
 	},
-	"Purchase Invoice" : { 
-		"on_submit" : "erpnext_australian_localisation.overrides.invoices.on_submit", 
-		"on_update" : "erpnext_australian_localisation.overrides.purchase_invoice.on_update" ,
-		"on_cancel" : "erpnext_australian_localisation.overrides.invoices.on_cancel"
+	"Purchase Invoice": {
+		"on_submit": "erpnext_australian_localisation.overrides.invoices.on_submit",
+		"on_update": "erpnext_australian_localisation.overrides.purchase_invoice.on_update",
+		"on_cancel": "erpnext_australian_localisation.overrides.invoices.on_cancel",
 	},
-	"Company" : {
-		"after_insert": "erpnext_australian_localisation.overrides.company.after_insert"
+	"Company": {"after_insert": "erpnext_australian_localisation.overrides.company.after_insert"},
+	"Expense Claim": {
+		"on_submit": "erpnext_australian_localisation.overrides.expense_claim.on_submit",
+		"on_update": "erpnext_australian_localisation.overrides.expense_claim.on_update",
+		"on_cancel": "erpnext_australian_localisation.overrides.invoices.on_cancel",
 	},
-	"Expense Claim" : { 
-		"on_submit" : "erpnext_australian_localisation.overrides.expense_claim.on_submit",
-		"on_update" : "erpnext_australian_localisation.overrides.expense_claim.on_update",
-		"on_cancel" : "erpnext_australian_localisation.overrides.invoices.on_cancel"
-		}
 }
 
 # Scheduled Tasks
@@ -209,11 +205,7 @@ doc_events = {
 # 	],
 # }
 
-scheduler_events = {
-	"monthly": [
-		"erpnext_australian_localisation.tasks.bas_report.create_bas_report"
-	]
-}
+scheduler_events = {"monthly": ["erpnext_australian_localisation.tasks.bas_report.create_bas_report"]}
 
 # Testing
 # -------
@@ -290,4 +282,3 @@ scheduler_events = {
 # default_log_clearing_doctypes = {
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
-

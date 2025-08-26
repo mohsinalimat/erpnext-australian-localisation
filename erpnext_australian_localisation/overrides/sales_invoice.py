@@ -2,11 +2,8 @@ import frappe
 
 
 def on_update(doc, event):
-
 	if doc.taxes_and_charges:
-		tax_template = frappe.db.get_value(
-			"Sales Taxes and Charges Template", doc.taxes_and_charges, "title"
-		)
+		tax_template = frappe.db.get_value("Sales Taxes and Charges Template", doc.taxes_and_charges, "title")
 		for item in doc.items:
 			if item.input_taxed:
 				item.item_tax_template = frappe.db.get_value(

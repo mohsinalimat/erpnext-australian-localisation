@@ -6,9 +6,7 @@ def initial_company_setup(company=None):
 	if company:
 		company_list = [company]
 	else:
-		company_list = frappe.get_list(
-			"Company", filters={"country": "Australia"}, pluck="name"
-		)
+		company_list = frappe.get_list("Company", filters={"country": "Australia"}, pluck="name")
 
 	au_localisation_settings = frappe.get_doc("AU Localisation Settings")
 

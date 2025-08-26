@@ -3,7 +3,6 @@ import pandas as pd
 
 
 def on_submit(doc, event):
-
 	if doc.taxes_and_charges:
 		result = []
 		if doc.doctype in ["Sales Invoice"]:
@@ -62,11 +61,7 @@ def on_submit(doc, event):
 					result.append(temp)
 		if result:
 			result = pd.DataFrame(result)
-			result = (
-				result.groupby(["bas_label", "account", "tax_code"])
-				.sum(sum_depends_on)
-				.reset_index()
-			)
+			result = result.groupby(["bas_label", "account", "tax_code"]).sum(sum_depends_on).reset_index()
 			bas_entries = result.to_dict(orient="records")
 			for bas_entry in bas_entries:
 				bas_doc = frappe.new_doc("AU BAS Entry")
@@ -83,9 +78,7 @@ def on_submit(doc, event):
 
 
 def on_cancel(doc, event):
-	bas_entries = frappe.get_list(
-		"AU BAS Entry", filters={"voucher_no": doc.name}, pluck="name"
-	)
+	bas_entries = frappe.get_list("AU BAS Entry", filters={"voucher_no": doc.name}, pluck="name")
 	for bas_entry in bas_entries:
 		frappe.delete_doc("AU BAS Entry", bas_entry, ignore_permissions=True)
 
