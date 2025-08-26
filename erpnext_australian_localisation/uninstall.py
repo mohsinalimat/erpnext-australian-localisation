@@ -3,13 +3,12 @@ from erpnext_australian_localisation.setup.delete_properties import (
 	delete_hrms_custom_fields,
 )
 
-# from erpnext_australian_localisation.setup.install_fixtures import remove_roles
-
 
 def before_uninstall():
 	remove_setup()
 
 
+# from erpnext_australian_localisation.setup.install_fixtures import remove_roles
 # def after_uninstall():
 # 	remove_roles()
 
