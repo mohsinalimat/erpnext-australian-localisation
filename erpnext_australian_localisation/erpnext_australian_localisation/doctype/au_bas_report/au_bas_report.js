@@ -64,7 +64,9 @@ frappe.ui.form.on("AU BAS Report", {
 						});
 					} else {
 						frappe.throw(
-							'BAS data can be updated only "In Review" status. Please change the status back to "In Review" for updating the BAS data.'
+							__(
+								'BAS data can be updated only "In Review" status. Please change the status back to "In Review" for updating the BAS data.'
+							)
 						);
 					}
 				});
@@ -154,7 +156,9 @@ frappe.ui.form.on("AU BAS Report", {
 		if (frm.doc.start_date && frm.doc.company) {
 			if (!reporting_period) {
 				frappe.throw(
-					"Please set reporting period in <a href='/app/au-localisation-settings/AU Localisation Settings' > ERPNext Australian Settings </a>"
+					__(
+						"Please set reporting period in <a href='/app/au-localisation-settings/AU Localisation Settings' > ERPNext Australian Settings </a>"
+					)
 				);
 			} else if (reporting_period) {
 				if (reporting_period === "Monthly") {

@@ -34,7 +34,7 @@ class AUBASReport(Document):
 def get_gst(name, company, start_date, end_date):
 	from frappe.model.mapper import get_mapped_doc
 
-	frappe.publish_realtime("bas_data_generator")
+	frappe.publish_realtime("bas_data_generator", user=frappe.session.user)
 
 	doc = frappe.get_doc("AU BAS Report", name)
 

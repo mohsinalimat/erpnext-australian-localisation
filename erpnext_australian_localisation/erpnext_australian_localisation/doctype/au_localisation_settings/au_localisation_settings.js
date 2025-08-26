@@ -49,7 +49,7 @@ frappe.ui.form.on("AU BAS Reporting Period", {
 			})
 			.then((data) => {
 				if (data.length) {
-					frappe.throw("Sorry can't delete company");
+					frappe.throw(__("Sorry can't delete company"));
 				}
 			});
 	},
