@@ -13,35 +13,8 @@ frappe.ui.form.on("AU BAS Report", {
 			};
 		});
 
+		frm.$wrapper.find(".grid-body").css({ "overflow-y": "scroll", "max-height": "200px" });
 		frm.trigger("update_label");
-
-		frm.fields_dict["1a_details"].$wrapper
-			.find(".grid-body")
-			.css({ "overflow-y": "scroll", "max-height": "200px" });
-		frm.fields_dict["1b_details"].$wrapper
-			.find(".grid-body")
-			.css({ "overflow-y": "scroll", "max-height": "200px" });
-		frm.fields_dict["g1_details"].$wrapper
-			.find(".grid-body")
-			.css({ "overflow-y": "scroll", "max-height": "200px" });
-		frm.fields_dict["g2_details"].$wrapper
-			.find(".grid-body")
-			.css({ "overflow-y": "scroll", "max-height": "200px" });
-		frm.fields_dict["g3_details"].$wrapper
-			.find(".grid-body")
-			.css({ "overflow-y": "scroll", "max-height": "200px" });
-		frm.fields_dict["g4_details"].$wrapper
-			.find(".grid-body")
-			.css({ "overflow-y": "scroll", "max-height": "200px" });
-		frm.fields_dict["g10_details"].$wrapper
-			.find(".grid-body")
-			.css({ "overflow-y": "scroll", "max-height": "200px" });
-		frm.fields_dict["g11_details"].$wrapper
-			.find(".grid-body")
-			.css({ "overflow-y": "scroll", "max-height": "200px" });
-		frm.fields_dict["g14_details"].$wrapper
-			.find(".grid-body")
-			.css({ "overflow-y": "scroll", "max-height": "200px" });
 
 		if (frm.is_new()) {
 			frm.set_df_property("reporting_status", "read_only", 1);
@@ -170,11 +143,13 @@ frappe.ui.form.on("AU BAS Report", {
 						.then((e) => {
 							if (e === null) {
 								frappe.msgprint(
-									"Start date is changed to " +
-										moment(frm.doc.start_date).format("DD-MM-YY") +
-										" to keep it in line with the " +
-										reporting_period +
-										" BAS setup"
+									__(
+										"Start date is changed to {0} to keep it in line with the {1} BAS setup",
+										[
+											moment(frm.doc.start_date).format("DD-MM-YY"),
+											reporting_period,
+										]
+									)
 								);
 							}
 						});
@@ -189,11 +164,13 @@ frappe.ui.form.on("AU BAS Report", {
 							await frm.set_value("start_date", data.message[0]).then((e) => {
 								if (e === null) {
 									frappe.msgprint(
-										"Start date is changed to " +
-											moment(frm.doc.start_date).format("DD-MM-YY") +
-											" to keep it in line with the " +
-											reporting_period +
-											" BAS setup"
+										__(
+											"Start date is changed to {0} to keep it in line with the {1} BAS setup",
+											[
+												moment(frm.doc.start_date).format("DD-MM-YY"),
+												reporting_period,
+											]
+										)
 									);
 								}
 							});

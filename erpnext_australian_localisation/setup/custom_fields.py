@@ -116,3 +116,97 @@ HRMS_CUSTOM_FIELDS = {
 		}
 	],
 }
+
+CUSTOM_FIELDS_FOR_BANK_FILE = {
+	"Supplier": [
+		{
+			"fieldname": "section_break_au_localisation",
+			"label": "AU Localisation",
+			"fieldtype": "Section Break",
+			"insert_after": "default_price_list",
+			"depends_on": "eval: doc.country === 'Australia'",
+			"module": "ERPNext Australian Localisation",
+		},
+		{
+			"fieldname": "is_allowed_in_pp",
+			"label": "Is Allowed in Payment Proposal",
+			"fieldtype": "Check",
+			"default": 1,
+			"insert_after": "section_break_au_localisation",
+			"module": "ERPNext Australian Localisation",
+		},
+		{
+			"fieldname": "lodgement_reference",
+			"label": "Lodgement Reference",
+			"fieldtype": "Data",
+			"length": 18,
+			"insert_after": "is_allowed_in_pp",
+			"module": "ERPNext Australian Localisation",
+		},
+		{
+			"fieldname": "column_break_s_au",
+			"fieldtype": "Column Break",
+			"insert_after": "lodgement_reference",
+			"module": "ERPNext Australian Localisation",
+		},
+		{
+			"fieldname": "branch_code",
+			"label": "BSB",
+			"fieldtype": "Data",
+			"length": 7,
+			"insert_after": "column_break_s_au",
+			"module": "ERPNext Australian Localisation",
+		},
+		{
+			"fieldname": "bank_account_no",
+			"label": "Bank Account Number",
+			"fieldtype": "Data",
+			"length": 9,
+			"insert_after": "branch_code",
+			"module": "ERPNext Australian Localisation",
+		},
+	],
+	"Bank Account": [
+		{
+			"fieldname": "section_break_payment_batch",
+			"label": "Payment Batch Info",
+			"fieldtype": "Section Break",
+			"insert_after": "mask",
+			"module": "ERPNext Australian Localisation",
+		},
+		{
+			"fieldname": "fi_abbr",
+			"label": "Financial Institution Abbreviation",
+			"fieldtype": "Data",
+			"length": 3,
+			"insert_after": "section_break_payment_batch",
+			"module": "ERPNext Australian Localisation",
+		},
+		{
+			"fieldname": "apca_number",
+			"label": "APCA Number",
+			"fieldtype": "Data",
+			"length": 6,
+			"insert_after": "fi_abbr",
+			"module": "ERPNext Australian Localisation",
+		},
+		{
+			"fieldname": "currency",
+			"label": "Currency",
+			"fieldtype": "Link",
+			"options": "Currency",
+			"fetch_from": "account.account_currency",
+			"insert_after": "apca_number",
+			"module": "ERPNext Australian Localisation",
+		},
+		{
+			"fieldname": "file_format",
+			"label": "File Format",
+			"fieldtype": "Select",
+			"options": "ABA",
+			"default": "ABA",
+			"insert_after": "currency",
+			"module": "ERPNext Australian Localisation",
+		},
+	],
+}
